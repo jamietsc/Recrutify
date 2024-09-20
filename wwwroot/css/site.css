@@ -1,7 +1,37 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    margin: 30px 0 5px 30px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+p {
+    margin: 30px 30px 5px 30px;
+    font-size: 24px;
+}
+
+label {
+    font-size: 20px;
+}
+
+button {
+    background-color: darkgrey;
+    color: black;
+    width: 200px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 24px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: grey;
 }
 
 h1:focus {

@@ -1,9 +1,27 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Startseite</PageTitle>
 
-<h1>Hello, world!</h1>
+<div>
+    <h1>Einstellungstest [Hier Testname einfügen]</h1>
 
-Welcome to your new app.
+    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;"/>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    <p>
+        Herzlich willkommen zum Einstellungstest [hier Testname einfügen]. Im Folgenden sollen Sie einige Fragen beantworten, damit wir Ihren Wissensstand prüfen können.
+        <br/>
+        <br/>
+        Viel Erfolg!
+    </p>
+
+    <div class="mb-3" style="margin: 30px 30px 5px 30px;">
+        <label for="FirstName" class="form-label">Vorname</label>
+        <input type="text" class="form-control" id="FirstName" placeholder="Max">
+        <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
+        <input type="text" class="form-control" id="LastName" placeholder="Mustermann">
+    </div>
+
+    <div>
+        <button type="button">Start</button>
+    </div>
+</div>
