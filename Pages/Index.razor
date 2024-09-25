@@ -2,6 +2,7 @@
 @using Recrutify.DataAccessLayer.Data
 @using Recrutify.DataAccessLayer.Repositories
 @inject IBewerber<BewerberModel> bewerberData
+@inject BewerberModel bewerberModel
 
 
 
@@ -23,12 +24,21 @@
 
     <div class="mb-3" style="margin: 30px 30px 5px 30px;">
         <label for="FirstName" class="form-label">Vorname</label>
-        <input @bind-value="@BewerberModel.Vorname" type="text" class="form-control" id="FirstName" placeholder="Max">
+        <input @bind-value="@bewerberModel.Vorname" type="text" class="form-control" id="FirstName" placeholder="Max">
         <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
-        <input type="text" class="form-control" id="LastName" placeholder="Mustermann">
+        <input @bind-value="@bewerberModel.Nachname" type="text" class="form-control" id="LastName" placeholder="Mustermann">
     </div>
 
     <div>
-        <button type="button">Start</button>
+        <button @onclick="start" type="button">Start</button>
     </div>
 </div>
+    
+@code {
+    async void start()
+    {
+        int insertedID = await bewerberData.InsertVornameNachname(bewerberModel);
+        bewerberModel.BID = insertedID;
+        
+    }
+}
