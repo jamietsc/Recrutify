@@ -1,6 +1,6 @@
 ﻿using Recrutify.Models;
 
-namespace Recrutify.DataAccessLayer.Repository
+namespace Recrutify.DataAccessLayer.Repositories
 {
     public interface IBewerber<T> where T : class
     {
