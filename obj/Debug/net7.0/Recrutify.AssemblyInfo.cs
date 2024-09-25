@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Recrutify")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+188045ae687d2b5e01e228972ef565ae9bec31e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b94c9297629a7b17913f0a3436133fc4eee3a714")]
 [assembly: System.Reflection.AssemblyProductAttribute("Recrutify")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Recrutify")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
