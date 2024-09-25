@@ -39,6 +39,6 @@
     {
         int insertedID = await bewerberData.InsertVornameNachname(bewerberModel);
         bewerberModel.BID = insertedID;
-        
+        System.Diagnostics.Debug.WriteLine("Bewerber ID=" + bewerberModel.BID);
     }
 }
