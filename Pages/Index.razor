@@ -6,8 +6,6 @@
 @inject BewerberTestModel bewerberTestModel
 @inject NavigationManager navigationManager
 
-
-
 @page "/"
 
 <PageTitle>Startseite</PageTitle>
@@ -15,12 +13,12 @@
 <div>
     <h1>Einstellungstest [Hier Testname einfügen]</h1>
 
-    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;"/>
+    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;" />
 
     <p>
         Herzlich willkommen zum Einstellungstest [hier Testname einfügen]. Im Folgenden sollen Sie einige Fragen beantworten, damit wir Ihren Wissensstand prüfen können.
-        <br/>
-        <br/>
+        <br />
+        <br />
         Viel Erfolg!
     </p>
 
@@ -30,14 +28,14 @@
         <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
         <input @bind-value="@bewerberModel.Nachname" type="text" class="form-control" id="LastName" placeholder="Mustermann">
         <label for="Einladungscode" class="form-label">Einladungscode</label>
-        <input @bind-value="@bewerberTestModel.TID" type="text" class="form-control" id="Einladungscode" placeholder="XXXX"/>
+        <input @bind-value="@bewerberTestModel.TID" type="text" class="form-control" id="Einladungscode" placeholder="XXXX" />
     </div>
 
     <div>
         <button @onclick="start" type="button">Start</button>
     </div>
 </div>
-    
+
 @code {
     async void start()
     {
@@ -45,9 +43,7 @@
         bewerberModel.BID = insertedID;
         System.Diagnostics.Debug.WriteLine("Bewerber ID=" + bewerberModel.BID);
 
-        navigationManager.NavigateTo("/test");
-
-
-
+        // Nutzer zur "/test"-Seite weiterleiten und TID verwenden
+        navigationManager.NavigateTo($"/test/{bewerberTestModel.TID}");
     }
 }
