@@ -3,6 +3,8 @@
 @using Recrutify.DataAccessLayer.Repositories
 @inject IBewerber<BewerberModel> bewerberData
 @inject BewerberModel bewerberModel
+@inject BewerberTestModel bewerberTestModel
+@inject NavigationManager navigationManager
 
 
 
@@ -28,7 +30,7 @@
         <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
         <input @bind-value="@bewerberModel.Nachname" type="text" class="form-control" id="LastName" placeholder="Mustermann">
         <label for="Einladungscode" class="form-label">Einladungscode</label>
-        <input type="text" class="form-control" id="Einladungscode" placeholder="XXXX"
+        <input @bind-value="@bewerberTestModel.TID" type="text" class="form-control" id="Einladungscode" placeholder="XXXX"/>
     </div>
 
     <div>
@@ -42,5 +44,10 @@
         int insertedID = await bewerberData.InsertVornameNachname(bewerberModel);
         bewerberModel.BID = insertedID;
         System.Diagnostics.Debug.WriteLine("Bewerber ID=" + bewerberModel.BID);
+
+        navigationManager.NavigateTo("/test");
+
+
+
     }
 }
