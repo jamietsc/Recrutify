@@ -24,3 +24,4 @@ namespace Recrutify.DataAccessLayer.Data
 
     }
 }
+ 
