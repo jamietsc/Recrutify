@@ -18,12 +18,15 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 //Data
 builder.Services.AddScoped<IBewerber<BewerberModel>, BewerberData>();
+builder.Services.AddScoped<IMultipleChoice<MultipleChoiceModel>, MultipleChoiceData>();
 
 //SqlAccess
 builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
 
 //Models
 builder.Services.AddScoped<BewerberModel>();
+builder.Services.AddScoped<MultipleChoiceModel>();
+builder.Services.AddScoped<BewerberTestModel>();
 
 var app = builder.Build();
 
