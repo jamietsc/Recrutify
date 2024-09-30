@@ -1,4 +1,6 @@
-﻿namespace Recrutify.Models
+﻿using System.Numerics;
+
+namespace Recrutify.Models
 {
     public class BewerberModel
     {
