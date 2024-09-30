@@ -12,7 +12,6 @@
         public Boolean Richtig_2 { get; set; }
         public Boolean Richtig_3 { get; set; }
         public Boolean Richtig_4 { get; set; }
-
-
+        public int? AusgewählteAntwort { get; set; }
     }
 }
