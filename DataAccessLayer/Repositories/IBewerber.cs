@@ -1,4 +1,4 @@
-﻿using Recrutify.Models;
+﻿/*using Recrutify.Models;
 
 namespace Recrutify.DataAccessLayer.Repositories
 {
@@ -8,3 +8,4 @@ namespace Recrutify.DataAccessLayer.Repositories
             
     }
 }
+*/

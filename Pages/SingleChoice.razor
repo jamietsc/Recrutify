@@ -1,0 +1,81 @@
+﻿@page "/test"
+@using Recrutify.Models
+@inject HelperModel helperModel
+
+<PageTitle>Einstellungstest</PageTitle>
+
+<div style="height: calc(100vh - 200px); overflow-y: auto;">
+    <h1>Einstellungstest [Hier Testname einfügen]</h1>
+
+    <h2>Frage @helperModel.questionNumber: Wie viel Versuche hat Fynnian Kolbe zum Bestehen der Analysis-Klausur gebraucht?</h2>
+
+    @if(multipleResponse == false)
+    {
+        <div>
+            <div class="answer">
+                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer1">
+                <label class="form-check-label" for="checkAnswer1">Natürlich nur einen, denn alles andere wäre einfach nur peinlich und ein Grund, sich zu exmatrikulieren, damit man nicht anderen Studierenden den Platz wegnimmt!</label>
+            </div>
+            <div class="answer">
+                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer2">
+                <label class="form-check-label" for="checkAnswer2">Drei</label>
+            </div>
+            <div class="answer">
+                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer3">
+                <label class="form-check-label" for="checkAnswer3">Zwei</label>
+            </div>
+            <div class="answer">
+                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer4">
+                <label class="form-check-label" for="checkAnswer4">Ick gloob ick fass et nich</label>
+            </div>
+        </div>       
+    } else
+    {
+        <div>
+            <div class="answer">
+                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer1">
+                <label class="form-check-label" for="radioAnswer1">Natürlich nur einen, denn alles andere wäre einfach nur peinlich und ein Grund, sich zu exmatrikulieren, damit man nicht anderen Studierenden den Platz wegnimmt!</label>
+            </div>
+            <div class="answer">
+                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer2">
+                <label class="form-check-label" for="radioAnswer2">Drei</label>
+            </div>
+            <div class="answer">
+                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer3">
+                <label class="form-check-label" for="radioAnswer3">Zwei</label>
+            </div>
+            <div class="answer">
+                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer4">
+                <label class="form-check-label" for="radioAnswer4">Ick gloob ick fass et nich</label>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="position-absolute bottom-0" style="display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; height: 100px; width: 1280px; background-color: white; border-top: 1px solid lightgrey;">
+    <button type="button" disabled="@isPreviousButtonDisabled()" @onclick="previousPage">Zurück</button>
+    <div>Hier könnte Ihre Werbung stehen.</div>
+    <button type="button" @onclick="nextPage">Weiter</button>
+</div>
+
+@code {
+    private bool multipleResponse = false;
+
+    private bool isPreviousButtonDisabled()
+    {
+        if (helperModel.questionNumber == 1)
+            return true;
+        
+        return false;
+    }
+
+    private void previousPage()
+    {
+        helperModel.questionNumber -= 1;
+    }
+    
+    private void nextPage()
+    {
+        helperModel.questionNumber += 1;
+    }
+}
