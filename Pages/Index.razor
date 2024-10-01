@@ -1,9 +1,49 @@
-﻿@page "/"
+﻿@using Recrutify.Models
+@using Recrutify.DataAccessLayer.Data
+@using Recrutify.DataAccessLayer.Repositories
+@inject IBewerber<BewerberModel> bewerberData
+@inject BewerberModel bewerberModel
+@inject BewerberTestModel bewerberTestModel
+@inject NavigationManager navigationManager
 
-<PageTitle>Index</PageTitle>
+@page "/"
 
-<h1>Hello, world!</h1>
+<PageTitle>Startseite</PageTitle>
 
-Welcome to your new app.
+<div>
+    <h1>Einstellungstest [Hier Testname einfügen]</h1>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;" />
+
+    <p>
+        Herzlich willkommen zum Einstellungstest [hier Testname einfügen]. Im Folgenden sollen Sie einige Fragen beantworten, damit wir Ihren Wissensstand prüfen können.
+        <br />
+        <br />
+        Viel Erfolg!
+    </p>
+
+    <div class="mb-3" style="margin: 30px 30px 5px 30px;">
+        <label for="FirstName" class="form-label">Vorname</label>
+        <input @bind-value="@bewerberModel.Vorname" type="text" class="form-control" id="FirstName" placeholder="Max">
+        <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
+        <input @bind-value="@bewerberModel.Nachname" type="text" class="form-control" id="LastName" placeholder="Mustermann">
+        <label for="Einladungscode" class="form-label">Einladungscode</label>
+        <input @bind-value="@bewerberTestModel.TID" type="text" class="form-control" id="Einladungscode" placeholder="XXXX" />
+    </div>
+
+    <div>
+        <button @onclick="start" type="button">Start</button>
+    </div>
+</div>
+
+@code {
+    async void start()
+    {
+        int insertedID = await bewerberData.InsertVornameNachname(bewerberModel);
+        bewerberModel.BID = insertedID;
+        System.Diagnostics.Debug.WriteLine("Bewerber ID=" + bewerberModel.BID);
+
+        // Nutzer zur "/test"-Seite weiterleiten und TID verwenden
+        navigationManager.NavigateTo($"/test/{bewerberTestModel.TID}");
+    }
+}
