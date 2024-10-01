@@ -1,4 +1,4 @@
-﻿/* using Dapper;
+﻿using Dapper;
 using System.Data;
 using Recrutify.DataAccessLayer.SqlDataAccess;
 using System.Data.SQLite;
@@ -36,4 +36,3 @@ namespace Recrutify.DataAccessLayer.SqlDataAccess
         }
     }
 }
-*/
