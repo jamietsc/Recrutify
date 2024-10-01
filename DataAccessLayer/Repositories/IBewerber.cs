@@ -6,5 +6,6 @@ namespace Recrutify.DataAccessLayer.Repositories
     {
         Task<int> InsertVornameNachname(T model);
             
+        Task InsertPunktzahl(T model);
     }
 }

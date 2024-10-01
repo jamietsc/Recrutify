@@ -6,6 +6,7 @@
 @inject BewerberModel bewerberModel
 @inject BewerberTestModel bewerberTestModel
 @inject IMultipleChoice<MultipleChoiceModel> multipleChoiceService
+@inject IBewerber<BewerberModel> bewerberData
 @inject NavigationManager navigationManager
 
 <h3>Einstellungstest [Hier Testname einfügen]</h3>
@@ -78,6 +79,8 @@ else
 
         //Debuggen (funktioniert, Punkte werden in der Konsole ausgegeben)
         Console.WriteLine($"Der Bewerber hat {bewerberModel.Ergebnis} Punkte erzielt");
+
+        await bewerberData.InsertPunktzahl(bewerberModel);
 
         navigationManager.NavigateTo("/ergebnis");
     }
