@@ -1,34 +1,55 @@
-﻿@using Recrutify.Models
+﻿@* @using Recrutify.Models
 @using Recrutify.DataAccessLayer.Data
 @using Recrutify.DataAccessLayer.Repositories
 @inject IBewerber<BewerberModel> bewerberData
-
+@inject BewerberModel bewerberModel
+*@
+@inject NavigationManager Navigation
 
 
 @page "/"
 
 <PageTitle>Startseite</PageTitle>
 
-<div>
+<div style="height: calc(100vh - 200px); overflow-y: auto;">
     <h1>Einstellungstest [Hier Testname einfügen]</h1>
 
-    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;"/>
+    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;" />
 
     <p>
         Herzlich willkommen zum Einstellungstest [hier Testname einfügen]. Im Folgenden sollen Sie einige Fragen beantworten, damit wir Ihren Wissensstand prüfen können.
-        <br/>
-        <br/>
+        <br />
+        <br />
         Viel Erfolg!
     </p>
 
-    <div class="mb-3" style="margin: 30px 30px 5px 30px;">
+    <div class="mb-3" style="margin: 30px 40px 5px 40px;">
         <label for="FirstName" class="form-label">Vorname</label>
-        <input @bind-value="@BewerberModel.Vorname" type="text" class="form-control" id="FirstName" placeholder="Max">
+        <input @*@bind-value="@bewerberModel.Vorname" *@ type="text" class="form-control" id="FirstName" placeholder="Max">
         <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
         <input type="text" class="form-control" id="LastName" placeholder="Mustermann">
     </div>
 
-    <div>
-        <button type="button">Start</button>
-    </div>
+    <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+
+        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
+    </p>
 </div>
+    
+<div class="position-absolute bottom-0" style="display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; height: 100px; width: 1280px; background-color: white; border-top: 1px solid lightgrey;">
+    <div></div>
+    <div></div>
+    <button type="button" @onclick="navigateToTest">Start</button>
+</div>
+
+@code {
+    private void navigateToTest()
+    {
+        Navigation.NavigateTo("/test");
+    }
+}

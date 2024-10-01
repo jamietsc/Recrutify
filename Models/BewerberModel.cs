@@ -1,4 +1,4 @@
-﻿namespace Recrutify.Models
+﻿/*namespace Recrutify.Models
 {
     public class BewerberModel
     {
@@ -8,3 +8,4 @@
         public int Ergebnis { get; set; } 
     }
 }
+*/

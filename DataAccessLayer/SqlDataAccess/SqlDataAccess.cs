@@ -1,4 +1,4 @@
-﻿using Dapper;
+﻿/* using Dapper;
 using System.Data;
 using System.Data.SqlClient;
 using Recrutify.DataAccessLayer.SqlDataAccess;
@@ -35,3 +35,4 @@ namespace Recrutify.DataAccessLayer.SqlDataAccess
         }
     }
 }
+*/
