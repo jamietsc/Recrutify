@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Radzen;
 using Recrutify.Data;
 using Recrutify.DataAccessLayer.Data;
 using Recrutify.DataAccessLayer.Repositories;
@@ -20,6 +21,7 @@ builder.Services.AddScoped<HelperModel>();
 //Data
 builder.Services.AddScoped<IBewerber<BewerberModel>, BewerberData>();
 builder.Services.AddScoped<IMultipleChoice<MultipleChoiceModel>, MultipleChoiceData>();
+builder.Services.AddScoped<IAdmin<AdminModel>, AdminData>();
 
 //SqlAccess
 builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
@@ -28,6 +30,10 @@ builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddScoped<BewerberModel>();
 builder.Services.AddScoped<MultipleChoiceModel>();
 builder.Services.AddScoped<BewerberTestModel>();
+builder.Services.AddScoped<AdminModel>();
+
+//Radzen Blazor
+builder.Services.AddRadzenComponents();
 
 var app = builder.Build();
 
