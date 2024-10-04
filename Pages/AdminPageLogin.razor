@@ -1,0 +1,24 @@
+﻿@page "/admin"
+
+@using Recrutify.Models
+
+@inject NavigationManager navigationManager
+@inject AdminModel adminModel
+
+
+<h3>AdminPageLogin</h3>
+
+<div class="mb-3" style="margin: 30px  40px 5px 40px;">
+    <label for="Nutzername" class="form-label">Benutzername:</label>
+    <input @bind-value="@adminModel.Benutzername" type="text" class="form-control" id="Nutzername" placeholder="Benutzername"/>
+    <label for="Passwort" class="form-label">Passwort:</label>
+    <input @bind-value="@adminModel.Passwort" type="password" class="form-control" id="Passwort" placeholder="********" />
+    <button type="button" @onclick="checkLogin">Anmelden</button>
+</div>
+
+@code {
+    async void checkLogin()
+    {
+        
+    }
+}
