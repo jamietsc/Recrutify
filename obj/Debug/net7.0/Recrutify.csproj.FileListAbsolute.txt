@@ -115,3 +115,10 @@ Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recru
 Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\obj\Debug\net7.0\Recrutify.csproj.Up2Date
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\Microsoft.AspNetCore.Authorization.dll
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\Microsoft.AspNetCore.Components.dll
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\Radzen.Blazor.dll
+Z:\BachelorOfScience-Informatik\3. Semester\Software_Engeneering\Recrutify\Recrutify\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
