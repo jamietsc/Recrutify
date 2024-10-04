@@ -1,54 +1,50 @@
-﻿@page "/test"
+﻿@page "/test/{tid:int}"
 @using Recrutify.Models
+@using Recrutify.DataAccessLayer.Data
+@using Recrutify.DataAccessLayer.Repositories
+@inject BewerberModel bewerberModel
+@inject BewerberTestModel bewerberTestModel
+@inject IMultipleChoice<MultipleChoiceModel> multipleChoiceService
+@inject IBewerber<BewerberModel> bewerberData
+@inject NavigationManager navigationManager
 @inject HelperModel helperModel
+
 
 <PageTitle>Einstellungstest</PageTitle>
 
 <div style="height: calc(100vh - 200px); overflow-y: auto;">
     <h1>Einstellungstest [Hier Testname einfügen]</h1>
 
-    <h2>Frage @helperModel.questionNumber: Wie viel Versuche hat Fynnian Kolbe zum Bestehen der Analysis-Klausur gebraucht?</h2>
+    @if (multipleChoiceQuestions != null && multipleChoiceQuestions.Count() > 0)
+    {
+        var currentQuestion = multipleChoiceQuestions.ElementAt(helperModel.questionNumber - 1);
+        <!-- Hole die aktuelle Frage -->
 
-    @if(multipleResponse == false)
-    {
+        <h2>Frage @helperModel.questionNumber: @currentQuestion.Text</h2>
+
         <div>
-            <div class="answer">
-                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer1">
-                <label class="form-check-label" for="checkAnswer1">Natürlich nur einen, denn alles andere wäre einfach nur peinlich und ein Grund, sich zu exmatrikulieren, damit man nicht anderen Studierenden den Platz wegnimmt!</label>
+            <p>@currentQuestion.Text</p>
+            <div>
+                <input class="form-check-input" type="radio" name="radioField_@currentQuestion.FID" @onchange="() => SetAnswer(currentQuestion, 1)" id="Answer1_@currentQuestion.FID">
+                <label class="form-check-label" for="Answer1_@currentQuestion.FID">@currentQuestion.Antwort_1</label>
             </div>
-            <div class="answer">
-                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer2">
-                <label class="form-check-label" for="checkAnswer2">Drei</label>
+            <div>
+                <input class="form-check-input" type="radio" name="radioField_@currentQuestion.FID" @onchange="() => SetAnswer(currentQuestion, 2)" id="Answer2_@currentQuestion.FID">
+                <label class="form-check-label" for="Answer2_@currentQuestion.FID">@currentQuestion.Antwort_2</label>
             </div>
-            <div class="answer">
-                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer3">
-                <label class="form-check-label" for="checkAnswer3">Zwei</label>
+            <div>
+                <input class="form-check-input" type="radio" name="radioField_@currentQuestion.FID" @onchange="() => SetAnswer(currentQuestion, 3)" id="Answer3_@currentQuestion.FID">
+                <label class="form-check-label" for="Answer3_@currentQuestion.FID">@currentQuestion.Antwort_3</label>
             </div>
-            <div class="answer">
-                <input class="form-check-input" type="checkbox" name="checkField" id="checkAnswer4">
-                <label class="form-check-label" for="checkAnswer4">Ick gloob ick fass et nich</label>
-            </div>
-        </div>       
-    } else
-    {
-        <div>
-            <div class="answer">
-                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer1">
-                <label class="form-check-label" for="radioAnswer1">Natürlich nur einen, denn alles andere wäre einfach nur peinlich und ein Grund, sich zu exmatrikulieren, damit man nicht anderen Studierenden den Platz wegnimmt!</label>
-            </div>
-            <div class="answer">
-                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer2">
-                <label class="form-check-label" for="radioAnswer2">Drei</label>
-            </div>
-            <div class="answer">
-                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer3">
-                <label class="form-check-label" for="radioAnswer3">Zwei</label>
-            </div>
-            <div class="answer">
-                <input class="form-check-input" type="radio" name="radioField" id="radioAnswer4">
-                <label class="form-check-label" for="radioAnswer4">Ick gloob ick fass et nich</label>
+            <div>
+                <input class="form-check-input" type="radio" name="radioField_@currentQuestion.FID" @onchange="() => SetAnswer(currentQuestion, 4)" id="Answer4_@currentQuestion.FID">
+                <label class="form-check-label" for="Answer4_@currentQuestion.FID">@currentQuestion.Antwort_4</label>
             </div>
         </div>
+    }
+    else
+    {
+        <p>Lade Fragen...</p>
     }
 </div>
 
@@ -59,23 +55,41 @@
 </div>
 
 @code {
-    private bool multipleResponse = false;
+    [Parameter]
+    public int tid { get; set; }
+
+    private List<MultipleChoiceModel> multipleChoiceQuestions; // Liste der Fragen
+    private int korrekteAntworten = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        multipleChoiceQuestions = (await multipleChoiceService.GetMultipleChoice(tid)).ToList();
+        helperModel.questionNumber = 1; // Erste Frage starten
+    }
+
+    private void SetAnswer(MultipleChoiceModel multipleChoiceModel, int selectedAnswer)
+    {
+        multipleChoiceModel.AusgewählteAntwort = selectedAnswer;
+    }
 
     private bool isPreviousButtonDisabled()
     {
-        if (helperModel.questionNumber == 1)
-            return true;
-        
-        return false;
+        return helperModel.questionNumber == 1;
     }
 
     private void previousPage()
     {
-        helperModel.questionNumber -= 1;
+        if (helperModel.questionNumber > 1)
+        {
+            helperModel.questionNumber--;
+        }
     }
-    
+
     private void nextPage()
     {
-        helperModel.questionNumber += 1;
+        if (helperModel.questionNumber < multipleChoiceQuestions.Count)
+        {
+            helperModel.questionNumber++;
+        }
     }
 }
