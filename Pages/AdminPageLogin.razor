@@ -1,9 +1,14 @@
-﻿@page "/admin"
+﻿@page "/adminlogin"
 
 @using Recrutify.Models
+@using Recrutify.DataAccessLayer.Data 
+@using Recrutify.DataAccessLayer.Repositories
+@using Recrutify.DataAccessLayer.SqlDataAccess
 
 @inject NavigationManager navigationManager
 @inject AdminModel adminModel
+@inject IAdmin<AdminModel> adminData
+@inject NavigationManager navigationManager
 
 
 <h3>AdminPageLogin</h3>
@@ -19,6 +24,16 @@
 @code {
     async void checkLogin()
     {
-        
+        bool result = await adminData.CheckCredentials(adminModel);
+        if(result == true)
+        {
+            navigationManager.NavigateTo("/admin");
+        } else
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                This is an alert box.
+            </div>
+        }
     }
 }
