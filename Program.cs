@@ -21,7 +21,7 @@ builder.Services.AddScoped<HelperModel>();
 //Data
 builder.Services.AddScoped<IBewerber<BewerberModel>, BewerberData>();
 builder.Services.AddScoped<IMultipleChoice<MultipleChoiceModel>, MultipleChoiceData>();
-//builder.Services.AddScoped<IAdmin<AdminModel>, AdminData>();
+builder.Services.AddScoped<IAdmin<AdminModel>, AdminData>();
 
 //SqlAccess
 builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();

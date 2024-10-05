@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace Recrutify.DataAccessLayer.Data
 {
-    public class AdminData
+    public class AdminData : IAdmin<AdminModel>
     {
         private readonly ISqlDataAccess _db;
         public AdminData(ISqlDataAccess db)
@@ -13,20 +13,17 @@ namespace Recrutify.DataAccessLayer.Data
             _db = db;
         }
 
-        public async Task<Boolean> CheckCredentials(AdminModel model)
+        public async Task<bool> CheckCredentials(AdminModel model)
         {
             var parameters = new { model.Benutzername, model.Passwort };
-            string sqlQuery = "SELECT Benutzername = @Benutzername, Passwort = @Passwort FROM Unternehmen;";
-            var result = await _db.LoadData<(AdminModel Admin, string Benutzername, string Passowrt), dynamic>(sqlQuery, parameters);
+            string sqlQuery = "SELECT COUNT(1) FROM Unternehmen WHERE Benutzername = @Benutzername AND Passwort = @Passwort;";
 
-            if (result == null)
-            {
-                return false;
-            } else
-            {
-                return true;
-            }
+            var result = await _db.LoadData<int, dynamic>(sqlQuery, parameters);
+
+            // Prüfen, ob mindestens ein Datensatz gefunden wurde
+            return result.FirstOrDefault() > 0;
         }
+
 
 
     }
