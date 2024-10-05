@@ -92,4 +92,20 @@
             helperModel.questionNumber++;
         }
     }
+
+    private async void auswerten() //Funktion welche am Ende im Button benutzt werden soll, dient zum speichern der Punkte in die DB
+    {
+        foreach(var question in multipleChoiceQuestions)
+        {
+            if ((question.AusgewählteAntwort == 1 && question.Richtig_1) ||
+                (question.AusgewählteAntwort == 2 && question.Richtig_2) ||
+                (question.AusgewählteAntwort == 3 && question.Richtig_3) ||
+                (question.AusgewählteAntwort == 4 && question.Richtig_4))
+            {
+                korrekteAntworten++;
+            }
+
+            await bewerberData.InsertPunktzahl(bewerberModel);
+        }
+    }
 }
