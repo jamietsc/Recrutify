@@ -3,6 +3,6 @@ namespace Recrutify.DataAccessLayer.Repositories
 {
     public interface IAdmin<T> where T : class
     {
-        Task<int> CheckCredentials(T model);
+        Task<bool> CheckCredentials(T model);
     }
 }

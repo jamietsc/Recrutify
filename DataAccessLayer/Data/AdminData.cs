@@ -13,11 +13,21 @@ namespace Recrutify.DataAccessLayer.Data
             _db = db;
         }
 
-        public async Task<int> CheckCredentials(AdminModel model)
+        public async Task<Boolean> CheckCredentials(AdminModel model)
         {
             var parameters = new { model.Benutzername, model.Passwort };
             string sqlQuery = "SELECT Benutzername = @Benutzername, Passwort = @Passwort FROM Unternehmen;";
-            return await _db.LoadData(sqlQuery, parameters);
+            var result = await _db.LoadData<(AdminModel Admin, string Benutzername, string Passowrt), dynamic>(sqlQuery, parameters);
+
+            if (result == null)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
         }
+
+
     }
 }
