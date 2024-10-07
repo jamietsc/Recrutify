@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Recrutify.Models;
-
-namespace Recrutify.DataAccessLayer.Repositories
+﻿namespace Recrutify.DataAccessLayer.Repositories
 {
     public interface IMultipleChoice<T> where T : class
     {

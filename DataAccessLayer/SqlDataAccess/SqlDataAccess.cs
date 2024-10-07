@@ -1,8 +1,6 @@
 ﻿using Dapper;
-using System.Data;
-using Recrutify.DataAccessLayer.SqlDataAccess;
-using System.Data.SQLite;
 using Microsoft.Data.Sqlite;
+using System.Data;
 
 namespace Recrutify.DataAccessLayer.SqlDataAccess
 {

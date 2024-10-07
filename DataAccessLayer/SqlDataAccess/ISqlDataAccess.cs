@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Recrutify.DataAccessLayer.SqlDataAccess
+﻿namespace Recrutify.DataAccessLayer.SqlDataAccess
 {
     public interface ISqlDataAccess
     {

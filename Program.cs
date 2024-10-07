@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Radzen;
-using Recrutify.Data;
 using Recrutify.DataAccessLayer.Data;
 using Recrutify.DataAccessLayer.Repositories;
 using Recrutify.DataAccessLayer.SqlDataAccess;

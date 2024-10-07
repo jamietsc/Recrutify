@@ -1,7 +1,6 @@
-﻿using Recrutify.DataAccessLayer.SqlDataAccess;
-using Recrutify.DataAccessLayer.Repositories;
+﻿using Recrutify.DataAccessLayer.Repositories;
+using Recrutify.DataAccessLayer.SqlDataAccess;
 using Recrutify.Models;
-using System.Numerics;
 
 namespace Recrutify.DataAccessLayer.Data
 {

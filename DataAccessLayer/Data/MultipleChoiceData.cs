@@ -1,6 +1,5 @@
 ﻿using Recrutify.DataAccessLayer.Repositories;
 using Recrutify.DataAccessLayer.SqlDataAccess;
-using Recrutify.Data;
 using Recrutify.Models;
 
 namespace Recrutify.DataAccessLayer.Data
@@ -24,4 +23,3 @@ namespace Recrutify.DataAccessLayer.Data
 
     }
 }
- 

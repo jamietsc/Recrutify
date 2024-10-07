@@ -1,10 +1,6 @@
 ﻿using Recrutify.DataAccessLayer.Repositories;
 using Recrutify.DataAccessLayer.SqlDataAccess;
 using Recrutify.Models;
-using Recrutify.DataAccessLayer.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Recrutify.DataAccessLayer.Data
 {
@@ -35,7 +31,7 @@ namespace Recrutify.DataAccessLayer.Data
 
         public async Task InsertPunktzahl(BewerberModel model)
         {
-            var paramter = new { model.Ergebnis, model.BID};
+            var paramter = new { model.Ergebnis, model.BID };
             string sqlQuery = "UPDATE Bewerber SET Ergebnis = @Ergebnis WHERE BID = @BID;";
             await _db.SaveData(sqlQuery, paramter);
         }
