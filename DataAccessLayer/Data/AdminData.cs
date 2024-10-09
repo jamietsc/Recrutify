@@ -23,6 +23,19 @@ namespace Recrutify.DataAccessLayer.Data
             return result.FirstOrDefault() > 0;
         }
 
+        public async Task<int> GetUID (AdminModel model)
+        {
+            var paramters = new {model.Benutzername};
+            string sqlQuery = "SELECT UID FROM Unternehmen WHERE Benutzername = @Benutzername;";
+            var result = await _db.LoadData<int, dynamic>(sqlQuery, paramters);
+            return result.FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<AdminModel>> GetTID(int UID)
+        {
+            string sqlQuery = "SELECT TID FROM Test WHERE UID = @UID;";
+            return await _db.LoadData<AdminModel, dynamic>(sqlQuery, new { UID });
+        }
 
 
     }
