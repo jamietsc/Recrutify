@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\AdminPage.razor" />
     <Content Remove="Pages\Ergebnis.razor" />
   </ItemGroup>
 
@@ -34,17 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\AdminPage.razor" />
     <_ContentIncludedByDefault Remove="Pages\Ergebnis.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\AdminPage.razor" />
     <None Include="Pages\Ergebnis.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\AdminPage.razor" />
   </ItemGroup>
 
 </Project>
