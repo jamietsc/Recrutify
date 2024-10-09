@@ -26,6 +26,7 @@
         bool result = await adminData.CheckCredentials(adminModel);
         if (result)
         {
+            adminModel.UID = await adminData.GetUID(adminModel);
             navigationManager.NavigateTo("/admin");
         }
         else
