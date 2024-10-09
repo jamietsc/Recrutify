@@ -19,6 +19,7 @@ builder.Services.AddScoped<HelperModel>();
 builder.Services.AddScoped<IBewerber<BewerberModel>, BewerberData>();
 builder.Services.AddScoped<IMultipleChoice<MultipleChoiceModel>, MultipleChoiceData>();
 builder.Services.AddScoped<IAdmin<AdminModel>, AdminData>();
+builder.Services.AddScoped<IBewerberTest<BewerberTestModel>, BewerberTestData>();
 
 //SqlAccess
 builder.Services.AddScoped<ISqlDataAccess, SqlDataAccess>();
@@ -28,6 +29,7 @@ builder.Services.AddScoped<BewerberModel>();
 builder.Services.AddScoped<MultipleChoiceModel>();
 builder.Services.AddScoped<BewerberTestModel>();
 builder.Services.AddScoped<AdminModel>();
+builder.Services.AddScoped<BewerberTestModel>();
 
 //Radzen Blazor
 builder.Services.AddRadzenComponents();
