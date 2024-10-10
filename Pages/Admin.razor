@@ -32,15 +32,27 @@
 @if (alleBewerber != null && alleBewerber.Any())
 {
     <h4>Bewerber für Test ID: @gesuchteTID</h4>
-    @foreach (var bewerber in alleBewerber)
-    {
-        <div>
-            <p><strong>BID:</strong>         @bewerber.BID</p>
-            <p><strong>Vorname:</strong>     @bewerber.Vorname</p>
-            <p><strong>Nachname:</strong>    @bewerber.Nachname</p>
-            <p><strong>Punktzahl:</strong>   @bewerber.Ergebnis</p>
-        </div>
-    }
+    <table> 
+        <thead>
+            <tr>
+                <th>Bewerber ID</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Punktzahl</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var bewerber in alleBewerber)
+            {
+                <tr>
+                    <td>@bewerber.BID</td>
+                    <td>@bewerber.Vorname</td>
+                    <td>@bewerber.Nachname</td>
+                    <td>@bewerber.Ergebnis</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 else if (gesuchteTID.HasValue && !alleBewerber.Any())
 {
