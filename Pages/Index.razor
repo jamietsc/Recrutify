@@ -5,6 +5,7 @@
 @inject BewerberModel bewerberModel
 @inject BewerberTestModel bewerberTestModel 
 @inject NavigationManager navigationManager
+@inject IBewerberTest<BewerberTestModel> bewerberTestData
 
 
 @page "/"
@@ -54,7 +55,11 @@
     {
         int insertedID = await bewerberData.InsertVornameNachname(bewerberModel);
         bewerberModel.BID = insertedID;
+        bewerberTestModel.BID = insertedID;
+
         System.Diagnostics.Debug.WriteLine("Bewerber ID=" + bewerberModel.BID);
+
+        await bewerberTestData.InsertTIDandBID(bewerberTestModel);
 
         // Nutzer zur "/test"-Seite weiterleiten und TID verwenden
         navigationManager.NavigateTo($"/test/{bewerberTestModel.TID}");
