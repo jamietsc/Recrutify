@@ -1,9 +1,7 @@
 ﻿using Recrutify.DataAccessLayer.Repositories;
 using Recrutify.DataAccessLayer.SqlDataAccess;
 using Recrutify.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Recrutify.DataAccessLayer.Data
 {
@@ -31,5 +29,29 @@ namespace Recrutify.DataAccessLayer.Data
 
             return insertedID;
         }
+
+        public async Task InsertPunktzahl(BewerberModel model)
+        {
+            var paramter = new { model.Ergebnis, model.BID };
+            string sqlQuery = "UPDATE Bewerber SET Ergebnis = @Ergebnis WHERE BID = @BID;";
+            await _db.SaveData(sqlQuery, paramter);
+        }
+
+        public async Task<List<BewerberModel>> GetEverything(List<int> bewerberIDs)
+        {
+            var results = new List<BewerberModel>();
+
+            foreach (var bewerberID in bewerberIDs)
+            {
+                string sqlQuery = "SELECT BID, Vorname, Nachname, Ergebnis FROM Bewerber WHERE BID = @bewerberID;";
+                var parameter = new { bewerberID };
+
+                var result = await _db.LoadData<BewerberModel, dynamic>(sqlQuery, parameter);
+                results.AddRange(result); // Ergebnisse zur Liste hinzufügen
+            }
+
+            return results; // Gibt die Liste von BewerberModel zurück
+        }
+
     }
 }

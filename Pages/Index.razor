@@ -1,10 +1,13 @@
-﻿@* @using Recrutify.Models
+﻿﻿@using Recrutify.Models
 @using Recrutify.DataAccessLayer.Data
 @using Recrutify.DataAccessLayer.Repositories
 @inject IBewerber<BewerberModel> bewerberData
 @inject BewerberModel bewerberModel
-*@
-@inject NavigationManager Navigation
+@inject BewerberTestModel bewerberTestModel
+@inject NavigationManager navigationManager
+@inject IBewerberTest<BewerberTestModel> bewerberTestData
+@inject TestModel testModel
+@inject IUnternehmen<TestModel> unternehmenService
 
 
 @page "/"
@@ -12,51 +15,32 @@
 <PageTitle>Startseite</PageTitle>
 
 <div style="height: calc(100vh - 200px); overflow-y: auto;">
-    <h1>Einstellungstest [Hier Testname einfügen]</h1>
-
-    <img src="images/ber_logo.png" height="150px" style="margin: 30px auto 5px auto; display: block;" />
+    <h1>Herzlich willkommen</h1>
 
     <p>
-        Herzlich willkommen zum Einstellungstest [hier Testname einfügen]. Im Folgenden sollen Sie einige Fragen beantworten, damit wir Ihren Wissensstand prüfen können.
-        <br />
-        <br />
-        Viel Erfolg!
+        Bitte geben Sie den Einladungscode ein, den Sie vom Unternehmen erhalten haben.
     </p>
 
     <div class="mb-3" style="margin: 30px 40px 5px 40px;">
-        <label for="FirstName" class="form-label">Vorname</label>
-        <input @bind-value="@bewerberModel.Vorname" type="text" class="form-control" id="FirstName" placeholder="Max">
-        <label for="LastName" class="form-label" style="margin-top: 20px;">Nachname</label>
-        <input @bind-value="@bewerberModel.Nachname" type="text" class="form-control" id="LastName" placeholder="Mustermann">
         <label for="Einladungscode" class="form-label">Einladungscode</label>
-        <input @bind-value="@bewerberTestModel.TID" type="text" class="form-control" id="Einladungscode" placeholder="XXXX" />
+        <input @bind-value="@bewerberTestModel.TID" type="text" class="form-control" id="Einladungscode" placeholder="0" />
     </div>
-
-    <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-
-        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
-    </p>
 </div>
 
 <div class="position-absolute bottom-0" style="display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; height: 100px; width: 1280px; background-color: white; border-top: 1px solid lightgrey;">
     <div></div>
     <div></div>
-    <button type="button" @onclick="start">Start</button>
+    <button type="button" @onclick="start">Weiter</button>
 </div>
 
 @code {
-    async void start()
-    {
-        int insertedID = await bewerberData.InsertVornameNachname(bewerberModel);
-        bewerberModel.BID = insertedID;
-        System.Diagnostics.Debug.WriteLine("Bewerber ID=" + bewerberModel.BID);
-
-        // Nutzer zur "/test"-Seite weiterleiten und TID verwenden
-        navigationManager.NavigateTo($"/test/{bewerberTestModel.TID}");
+        async void start()
+        {
+            testModel.TID = bewerberTestModel.TID;
+            testModel.UID = await unternehmenService.GetUIDFromTID(testModel.TID ?? 0);
+            testModel.Name = await unternehmenService.GetName(testModel.UID);
+            Console.WriteLine(testModel.UID);
+            Console.WriteLine(testModel.Name);
+            navigationManager.NavigateTo($"/welcome/{bewerberTestModel.TID}");
     }
 }
