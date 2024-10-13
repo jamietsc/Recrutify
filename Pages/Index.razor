@@ -1,4 +1,6 @@
-﻿﻿@using Recrutify.Models
+﻿@page "/"
+
+@using Recrutify.Models
 @using Recrutify.DataAccessLayer.Data
 @using Recrutify.DataAccessLayer.Repositories
 @inject IBewerber<BewerberModel> bewerberData
@@ -8,9 +10,6 @@
 @inject IBewerberTest<BewerberTestModel> bewerberTestData
 @inject TestModel testModel
 @inject IUnternehmen<TestModel> unternehmenService
-
-
-@page "/"
 
 <PageTitle>Startseite</PageTitle>
 
@@ -34,13 +33,13 @@
 </div>
 
 @code {
-        async void start()
-        {
-            testModel.TID = bewerberTestModel.TID;
-            testModel.UID = await unternehmenService.GetUIDFromTID(testModel.TID ?? 0);
-            testModel.Name = await unternehmenService.GetName(testModel.UID);
-            Console.WriteLine(testModel.UID);
-            Console.WriteLine(testModel.Name);
-            navigationManager.NavigateTo($"/welcome/{bewerberTestModel.TID}");
+    async void start()
+    {
+        testModel.TID = bewerberTestModel.TID;
+        testModel.UID = await unternehmenService.GetUIDFromTID(testModel.TID ?? 0);
+        testModel.Name = await unternehmenService.GetName(testModel.UID);
+        Console.WriteLine(testModel.UID);
+        Console.WriteLine(testModel.Name);
+        navigationManager.NavigateTo($"/welcome/{bewerberTestModel.TID}");
     }
 }

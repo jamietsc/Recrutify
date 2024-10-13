@@ -1,4 +1,3 @@
-//using Radzen;
 using Recrutify.DataAccessLayer.Data;
 using Recrutify.DataAccessLayer.Repositories;
 using Recrutify.DataAccessLayer.SqlDataAccess;
@@ -18,7 +17,7 @@ builder.Services.AddScoped<HelperModel>();
 //Data
 builder.Services.AddScoped<IBewerber<BewerberModel>, BewerberData>();
 builder.Services.AddScoped<IMultipleChoice<MultipleChoiceModel>, MultipleChoiceData>();
-//builder.Services.AddScoped<IAdmin<AdminModel>, AdminData>();
+builder.Services.AddScoped<IAdmin<AdminModel>, AdminData>();
 builder.Services.AddScoped<IBewerberTest<BewerberTestModel>, BewerberTestData>();
 builder.Services.AddScoped<IUnternehmen<TestModel>, UnternehmenData>();
 
@@ -30,10 +29,7 @@ builder.Services.AddScoped<BewerberModel>();
 builder.Services.AddScoped<MultipleChoiceModel>();
 builder.Services.AddScoped<BewerberTestModel>();
 builder.Services.AddScoped<TestModel>();
-//builder.Services.AddScoped<AdminModel>();
-
-//Radzen Blazor
-//builder.Services.AddRadzenComponents();
+builder.Services.AddScoped<AdminModel>();
 
 var app = builder.Build();
 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Finn Luca\\OneDrive\\HWR\\Semester 3\\Software Engineering 1\\Recrutify\\GitHub\\Recrutify\\Recrutify.csproj": {}
+    "Z:\\BachelorOfScience-Informatik\\3. Semester\\Software_Engeneering\\Recrutify\\Recrutify\\Recrutify.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Finn Luca\\OneDrive\\HWR\\Semester 3\\Software Engineering 1\\Recrutify\\GitHub\\Recrutify\\Recrutify.csproj": {
+    "Z:\\BachelorOfScience-Informatik\\3. Semester\\Software_Engeneering\\Recrutify\\Recrutify\\Recrutify.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Finn Luca\\OneDrive\\HWR\\Semester 3\\Software Engineering 1\\Recrutify\\GitHub\\Recrutify\\Recrutify.csproj",
+        "projectUniqueName": "Z:\\BachelorOfScience-Informatik\\3. Semester\\Software_Engeneering\\Recrutify\\Recrutify\\Recrutify.csproj",
         "projectName": "Recrutify",
-        "projectPath": "C:\\Users\\Finn Luca\\OneDrive\\HWR\\Semester 3\\Software Engineering 1\\Recrutify\\GitHub\\Recrutify\\Recrutify.csproj",
-        "packagesPath": "C:\\Users\\Finn Luca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Finn Luca\\OneDrive\\HWR\\Semester 3\\Software Engineering 1\\Recrutify\\GitHub\\Recrutify\\obj\\",
+        "projectPath": "Z:\\BachelorOfScience-Informatik\\3. Semester\\Software_Engeneering\\Recrutify\\Recrutify\\Recrutify.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "Z:\\BachelorOfScience-Informatik\\3. Semester\\Software_Engeneering\\Recrutify\\Recrutify\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Finn Luca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }

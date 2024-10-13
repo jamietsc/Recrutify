@@ -133,9 +133,10 @@
                 korrekteAntworten++;
             }
 
-            await bewerberData.InsertPunktzahl(bewerberModel);
-        }
 
+        }
+        bewerberModel.Ergebnis = korrekteAntworten;
+        await bewerberData.InsertPunktzahl(bewerberModel);
         Console.WriteLine(korrekteAntworten);
         navigationManager.NavigateTo("/end");
     }
