@@ -22,7 +22,7 @@ namespace Recrutify.DataAccessLayer.Data
         public async Task<IEnumerable<BewerberTestModel>> GetBIDs(int? TID)
         {
             string sqlQuery = "SELECT BID FROM Bewerber_Test WHERE TID = @TID";
-            return await _db.LoadData<BewerberTestModel, dynamic>(sqlQuery, new  { TID });
+            return await _db.LoadData<BewerberTestModel, dynamic>(sqlQuery, new { TID });
         }
     }
 }

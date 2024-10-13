@@ -58,6 +58,14 @@ button:disabled {
     background-color: #f0f0f0;
 }
 
+button.important {
+    background-color: firebrick;
+}
+
+button.important:hover {
+    background-color: darkred;
+}
+
 h1:focus {
     outline: none;
 }
