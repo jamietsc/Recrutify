@@ -25,9 +25,6 @@
     }
 </select>
 
-<!-- Button zum Suchen der Bewerber -->
-<button @onclick="suchen" type="button">Ergebnis anzeigen</button>
-
 <!-- Bewerberanzeige nach erfolgreicher Suche -->
 @if (alleBewerber != null && alleBewerber.Any())
 {
@@ -58,6 +55,12 @@ else if (gesuchteTID.HasValue && !alleBewerber.Any())
 {
     <p>Keine Bewerber für diesen Test gefunden.</p>
 }
+
+<div class="position-absolute bottom-0" style="display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; height: 100px; width: 1280px; background-color: white; border-top: 1px solid lightgrey;">
+    <div></div>
+    <div></div>
+    <button type="button" @onclick="suchen">Ergebnis anzeigen</button>
+</div>
 
 @code {
     private List<AdminModel> testIDs = new List<AdminModel>(); // Liste aller Tests
