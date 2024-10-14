@@ -7,5 +7,7 @@ namespace Recrutify.DataAccessLayer.Repositories
         Task<int> GetUIDFromTID(int TID);
 
         Task<String> GetName(int UID);
+
+        Task<int> GetDauer(int TID);
     }
 }

@@ -28,5 +28,13 @@ namespace Recrutify.DataAccessLayer.Data
             var result = await _db.LoadData<String, dynamic>(sqlQuery, parameters);
             return result.FirstOrDefault();
         }
+
+        public async Task<int> GetDauer(int TID)
+        {
+            var parameters = new { TID };
+            string sqlQuery = "SELECT Dauer FROM Test WHERE TID = @TID";
+            var result = await _db.LoadData<int, dynamic>(sqlQuery, parameters);
+            return result.FirstOrDefault();
+        }
     }
 }

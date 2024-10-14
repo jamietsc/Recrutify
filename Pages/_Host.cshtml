@@ -14,6 +14,12 @@
     <link href="Recrutify.styles.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png"/>
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+    <script>
+        function OpenModal() {
+            const modal = document.getElementById('modalEndOfTime');
+            modal.showModal();
+        }
+    </script>
 </head>
 <body>
     <component type="typeof(App)" render-mode="ServerPrerendered" />
