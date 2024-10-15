@@ -1,5 +1,6 @@
 ﻿namespace Recrutify.Models
 {
+    //Model zum Speichern der Test Informationen
     public class TestModel
     {
         public int? TID { get; set; }

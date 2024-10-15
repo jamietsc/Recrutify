@@ -1,5 +1,6 @@
 ﻿namespace Recrutify.Models
 {
+    //Model für die Admin Seite
     public class AdminModel
     {
         public int UID { get; set; }

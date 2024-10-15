@@ -26,6 +26,7 @@
 </div>
 
 @code {
+    //Überprüfen der Anmelde Daten, bei Erfolg weiterleiten
     async Task checkLogin()
     {
         bool result = await adminData.CheckCredentials(adminModel);
